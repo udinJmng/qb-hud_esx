@@ -282,21 +282,28 @@ AddEventHandler('prot-hud:client:UpdateDrivingMeters', function(toggle, amount)
     })
 end)
 
-RegisterNetEvent('prot-hud:client:UpdateVoiceProximity')
-AddEventHandler('prot-hud:client:UpdateVoiceProximity', function(Proximity)
+RegisterNetEvent('pma-voice:setTalkingMode')
+AddEventHandler('pma-voice:setTalkingMode', function(newTalkingRange)
     SendNUIMessage({
         action = "proximity",
-        prox = Proximity
+        IsTalking = newTalkingRange
     })
 end)
 
-RegisterNetEvent('prot-hud:client:ProximityActive')
-AddEventHandler('prot-hud:client:ProximityActive', function(active)
-    SendNUIMessage({
-        action = "talking",
-        IsTalking = active
-    })
+-- TALKING ACTIVE
+
+Citizen.CreateThread(function()
+    while true do
+        Citizen.Wait(250)
+        local playerTalking = NetworkIsPlayerTalking(PlayerId())
+
+        SendNUIMessage({
+            action = 'talking',
+            voice = playerTalking
+        })
+    end
 end)
+
 
 
 local LastHeading = nil
