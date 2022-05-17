@@ -286,7 +286,7 @@ RegisterNetEvent('pma-voice:setTalkingMode')
 AddEventHandler('pma-voice:setTalkingMode', function(newTalkingRange)
     SendNUIMessage({
         action = "proximity",
-        IsTalking = newTalkingRange
+        prox = newTalkingRange
     })
 end)
 
@@ -299,7 +299,7 @@ Citizen.CreateThread(function()
 
         SendNUIMessage({
             action = 'talking',
-            voice = playerTalking
+            IsTalking = playerTalking
         })
     end
 end)
