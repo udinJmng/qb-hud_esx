@@ -130,6 +130,15 @@ var CurrentProx = 0;
             $(".voice-block").animate({"background-color": "#fc4e03"}, 150);
         }
     }
+    
+        PRHud.SetTalkingState2 = function(data) {
+        if (!data.IsTalking) {
+            $(".voice-block").animate({"background-color": "rgb(255, 255, 255)"}, 150);
+        } else {
+            $(".voice-block").animate({"background-color": "#fc4e03"}, 150);
+        }
+    }
+
 
     PRHud.Update = function(data) {
         if(data.type == "cash") {
@@ -209,6 +218,10 @@ var CurrentProx = 0;
                 case "talking":
                     PRHud.SetTalkingState(event.data);
                     break;
+                                    case "talking2":
+                    PRHud.SetTalkingState2(event.data);
+                    break;
+
                 case "UpdateCompass":
                     PRHud.UpdateCompass(event.data);
                     break;
