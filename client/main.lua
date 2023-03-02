@@ -291,6 +291,8 @@ AddEventHandler('pma-voice:setTalkingMode', function(newTalkingRange)
 end)
 
 -- TALKING ACTIVE
+
+local usingradio = false
 AddEventHandler("pma-voice:radioActive", function(radioTalking) -- i thin this is the final result but i didn't testing yet pog!!!
 		usingRadio = radioTalking 
         SendNUIMessage({
@@ -305,13 +307,13 @@ local usingRadio = false
 Citizen.CreateThread(function()
     while true do
         Citizen.Wait(250)
-	usingRadio = false
+	if not usingradio then
         local playerTalking = NetworkIsPlayerTalking(PlayerId())
-print("talking active 250 milisecond")
         SendNUIMessage({
             action = 'talking',
             IsTalking = playerTalking
         })
+				end
     end
 end)
 
