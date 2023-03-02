@@ -218,7 +218,7 @@ var CurrentProx = 0;
                 case "talking":
                     PRHud.SetTalkingState(event.data);
                     break;
-                                    case "talking2":
+                                    case "radio":
                     PRHud.SetTalkingState2(event.data);
                     break;
 
