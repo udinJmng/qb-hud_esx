@@ -127,12 +127,12 @@ var CurrentProx = 0;
         if (!data.IsTalking) {
             $(".voice-block").animate({"background-color": "rgb(255, 255, 255)"}, 150);
         } else {
-            $(".voice-block").animate({"background-color": "#fc4e03"}, 150);
+            $(".voice-block").animate({"background-color": "##00ffa6"}, 150);
         }
     }
     
         PRHud.SetTalkingState2 = function(data) {
-        if (!data.IsTalking) {
+        if (!data.radio) {
             $(".voice-block").animate({"background-color": "rgb(255, 255, 255)"}, 150);
         } else {
             $(".voice-block").animate({"background-color": "#fc4e03"}, 150);
